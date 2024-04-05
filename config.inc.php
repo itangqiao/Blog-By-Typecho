@@ -6,8 +6,7 @@
  * @license    GNU General Public License 2.0
  * @version    $Id$
  */
-
-/** 开启https */
+/** 开启https */ 
 define('__TYPECHO_SECURE__',true);
 
 /** 定义根目录 */
@@ -34,14 +33,16 @@ require_once 'Typecho/Common.php';
 Typecho_Common::init();
 
 /** 定义数据库参数 */
-$db = new Typecho_Db('Pdo_Mysql', 'typecho_');
+$db = new Typecho_Db('数据库驱动名称: Pdo_Mysql 或 Pdo_Pgsql', '表前缀 如: myblog_');
 $db->addServer(array (
   'host' => '数据库地址',
   'user' => '数据库用户名',
   'password' => '数据库密码',
-  'charset' => 'utf8mb4',
-  'port' => '3306',
-  'database' => '数据库名称',
-  'engine' => 'MyISAM',
+  'charset' => '数据库编码, 推荐：utf8mb4',
+  'port' => 数据库端口,
+  'database' => '数据库名',
+  'engine' => '数据库引擎, 对于MySQL为 InnoDB 或 MyISAM',
+  'sslCa' => '数据库SSL证书路径',
+  'sslVerify' => 启用SSL证书验证 true 或 false,
 ), Typecho_Db::READ | Typecho_Db::WRITE);
 Typecho_Db::set($db);
